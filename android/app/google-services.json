@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "704773093337",
+    "project_id": "miler-b9e59",
+    "storage_bucket": "miler-b9e59.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:704773093337:android:93ce4e83d8e1be950d0bc8",
+        "android_client_info": {
+          "package_name": "dev.dan.running_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC9yla-Z23U82q1hlbfkbBLHL43k0F-5hc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
