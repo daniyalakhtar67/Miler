@@ -12,26 +12,30 @@ class Login extends StatefulWidget {
 
 class _LoginState extends State<Login> {
   @override
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container(
-        height: double.infinity,
-        width: double.infinity,
-        color: AppColors.background, // base color
-        child: Container(
-          decoration: BoxDecoration(
-            gradient: RadialGradient(
-              radius: 1.2,
-              center: const Alignment(-0.6, -0.6),
-              colors: [
-                AppColors.blueGlow.withOpacity(0.35),
-                Colors.transparent,
-              ],
+      backgroundColor: AppColors.backgroundDark,
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: Container(
+              decoration: BoxDecoration(
+                gradient: RadialGradient(
+                  radius: 1.2,
+                  center: const Alignment(-0.6, -0.6),
+                  colors: [
+                    AppColors.backgroundLight,
+                    Colors.transparent,
+                  ],
+                ),
+              ),
             ),
           ),
-          // this container now fills the Scaffold's full space
-          // because Scaffold.body gives it tight/bounded constraints
-        ),
+
+
+        ],
       ),
     );
   }

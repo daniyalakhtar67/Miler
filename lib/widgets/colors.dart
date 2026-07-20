@@ -1,10 +1,20 @@
 import 'package:flutter/material.dart';
 
 class AppColors {
-  static const background = Color(0xFF0A0A14);
-  static const blueGlow = Color(0xFF3B5BFF);
-  static const purpleGlow = Color(0xFF8B3FD9);
-  static const titleText = Color(0xFFEDEBFA);
-  static const subtitleText = Color(0xFFA8A3C9);
-  static const star = Colors.white;
+  static const backgroundDark = Color(
+    0xFF3D0A5C,
+  ); // gradient background top-left
+  static const backgroundLight = Color(
+    0xFF8A1FA8,
+  ); // gradient background bottom-right
+  static const avatarCircle = Color(0xFFB721B0); // profile icon circle
+  static const loginButton = Color(0xFFC71FC4); // login button
+  static const registerButton = Color(0xFF7A1470); // register button
+  static const inputText = Color(0xFFE0D5E8); // input placeholder text
+  static const inputLine = Color(0xFFB89EC4); // underline below inputs
+  static const iconColor = Colors.white; // email/lock icons
+  static const forgotPasswordText = Color(
+    0xFFD9B8E8,
+  ); // "Forgot Password?" text
+  static const checkboxCheck = Colors.black; // checkmark inside checkbox
 }
