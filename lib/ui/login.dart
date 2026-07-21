@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:running_app/ui/dashboard.dart';
 import 'package:running_app/ui/login.dart';
+import 'package:running_app/ui/signup.dart';
 import 'package:running_app/widgets/colors.dart';
 import 'package:running_app/widgets/utils.dart';
 
@@ -159,6 +160,27 @@ class _LoginState extends State<Login> {
                             : Text('LOGIN'),
                       ),
                     ],
+                  ),
+                ),
+              ),
+              SizedBox(height: 20),
+              Text(
+                'Don\'t Have an account',
+                style: TextStyle(color: Colors.white, fontSize: 18),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Signup()),
+                  );
+                },
+                child: Text(
+                  'SignUp',
+                  style: TextStyle(
+                    color: Colors.pink,
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
                   ),
                 ),
               ),
