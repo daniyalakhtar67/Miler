@@ -53,6 +53,17 @@ class _LoginState extends State<Login> {
     });
   }
 
+  Widget _blob(Color color, double size) {
+    return ImageFiltered(
+      imageFilter: ImageFilter.blur(sigmaX: 80, sigmaY: 80),
+      child: Container(
+        width: size,
+        height: size,
+        decoration: BoxDecoration(color: color, shape: BoxShape.circle),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,22 +71,11 @@ class _LoginState extends State<Login> {
       body: Stack(
         children: [
           Positioned.fill(
-            child: ImageFiltered(
-              imageFilter: ImageFilter.blur(sigmaX: 30, sigmaY: 30),
-              child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    colors: [
-                      AppColors.new1,
-                      AppColors.new2,
-                      AppColors.new3,
-                    ],
-                  ),
-                ),
-              ),
-            ),
+            child: Container(color: AppColors.backgroundDark),
           ),
-
+          Positioned(top: -50, left: -50, child: _blob(AppColors.new1, 200)),
+          Positioned(top: 100, right: -60, child: _blob(AppColors.new2, 220)),
+          Positioned(bottom: -60, left: 60, child: _blob(AppColors.new3, 200)),
           Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
