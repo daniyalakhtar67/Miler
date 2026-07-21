@@ -37,8 +37,9 @@ class _Splash_ScreenState extends State<Splash_Screen> {
                   radius: 1.2,
                   center: const Alignment(-0.6, -0.6),
                   colors: [
-                    AppColors.backgroundLight,
-                    Colors.transparent,
+                   AppColors.new1,
+                    AppColors.new2,
+                    AppColors.new3,
                   ],
                 ),
               ),
@@ -62,7 +63,6 @@ class _Splash_ScreenState extends State<Splash_Screen> {
                       width: 200,
                       decoration: const BoxDecoration(
                         color: Colors.white,
-                      // borderRadius: BorderRadius.only(topLeft: 10, bottomLeft: 10)
                       image: DecorationImage(image:  AssetImage('assets/images/logo.png'),
                       fit: BoxFit.contain,
                       )

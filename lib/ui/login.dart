@@ -1,7 +1,11 @@
 import 'dart:async';
+import 'dart:ui';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:running_app/ui/dashboard.dart';
 import 'package:running_app/ui/login.dart';
 import 'package:running_app/widgets/colors.dart';
+import 'package:running_app/widgets/utils.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -11,7 +15,42 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  final email = TextEditingController();
+  final pass = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
+  final _auth = FirebaseAuth.instance;
+  bool loading = false;
+
   @override
+  void dispose() {
+    email.dispose();
+    pass.dispose();
+    super.dispose();
+  }
+
+  void login() {
+    setState(() {
+      loading = true;
+    });
+    _auth.signInWithEmailAndPassword(
+      email: email.text.toString(),
+      password: pass.text.toString(),
+    ).then((value) {
+      Utils().tomsg(value.user!.email.toString());
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => Dashboard()),
+      );
+      setState(() {
+        loading = false;
+      });
+    }).onError((error, stackTrace) {
+      Utils().tomsg(error.toString());
+      setState(() {
+        loading = false;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,21 +59,111 @@ class _LoginState extends State<Login> {
       body: Stack(
         children: [
           Positioned.fill(
-            child: Container(
-              decoration: BoxDecoration(
-                gradient: RadialGradient(
-                  radius: 1.2,
-                  center: const Alignment(-0.6, -0.6),
-                  colors: [
-                    AppColors.backgroundLight,
-                    Colors.transparent,
-                  ],
+            child: ImageFiltered(
+              imageFilter: ImageFilter.blur(sigmaX: 30, sigmaY: 30),
+              child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(
+                    colors: [
+                      AppColors.new1,
+                      AppColors.new2,
+                      AppColors.new3,
+                    ],
+                  ),
                 ),
               ),
             ),
           ),
 
-
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              CircleAvatar(
+                radius: 45,
+                backgroundColor: Colors.purpleAccent,
+                child: Icon(Icons.person, size: 50, color: Colors.white),
+              ),
+              SizedBox(height: 20),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Form(
+                  key: _formKey,
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        controller: email,
+                        decoration: InputDecoration(
+                          prefixIcon: Icon(Icons.alternate_email, color: Colors.white),
+                          hintText: 'Username',
+                          hintStyle: TextStyle(color: Colors.white),
+                          border: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Enter Email";
+                          }
+                          return null;
+                        },
+                      ),
+                      SizedBox(height: 15),
+                      TextFormField(
+                        controller: pass,
+                        obscureText: true,
+                        obscuringCharacter: '*',
+                        keyboardType: TextInputType.text,
+                        decoration: InputDecoration(
+                          hintText: "Enter Password",
+                          hintStyle: TextStyle(color: Colors.white),
+                          prefixIcon: Icon(Icons.lock, color: Colors.white),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide: BorderSide(color: Colors.white),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(20),
+                            borderSide: BorderSide(color: Colors.white),
+                          ),
+                        ),
+                        validator: (value) {
+                          if (value!.isEmpty) {
+                            return "Enter Password";
+                          }
+                          return null;
+                        },
+                      ),
+                      SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            login();
+                          }
+                        },
+                        child: loading
+                            ? CircularProgressIndicator(strokeWidth: 3)
+                            : Text('LOGIN'),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );

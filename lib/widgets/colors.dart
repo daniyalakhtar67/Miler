@@ -12,6 +12,9 @@ class AppColors {
   static const registerButton = Color(0xFF7A1470); // register button
   static const inputText = Color(0xFFE0D5E8); // input placeholder text
   static const inputLine = Color(0xFFB89EC4); // underline below inputs
+  static const new1 = Color(0xFF6A0DAD);
+  static const new2 = Color(0xFFB026C7);
+  static const new3 = Color(0xFF4B0082);
   static const iconColor = Colors.white; // email/lock icons
   static const forgotPasswordText = Color(
     0xFFD9B8E8,
