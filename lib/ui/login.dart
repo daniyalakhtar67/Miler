@@ -19,7 +19,7 @@ class _LoginState extends State<Login> {
   final email = TextEditingController();
   final pass = TextEditingController();
   final _formKey = GlobalKey<FormState>();
-  final _auth = FirebaseAuth.instance;
+  FirebaseAuth _auth = FirebaseAuth.instance;
   bool loading = false;
 
   @override
@@ -93,6 +93,7 @@ class _LoginState extends State<Login> {
                   child: Column(
                     children: [
                       TextFormField(
+                        style: TextStyle(color: Colors.white),
                         controller: email,
                         decoration: InputDecoration(
                           prefixIcon: Icon(Icons.alternate_email, color: Colors.white),
@@ -120,6 +121,7 @@ class _LoginState extends State<Login> {
                       ),
                       SizedBox(height: 15),
                       TextFormField(
+                        style: TextStyle(color: Colors.white),
                         controller: pass,
                         obscureText: true,
                         obscuringCharacter: '*',
@@ -149,10 +151,15 @@ class _LoginState extends State<Login> {
                         },
                       ),
                       SizedBox(height: 20),
+
                       ElevatedButton(
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
-                            login();
+                           _auth.signInWithEmailAndPassword(email: email.text.toString(), 
+                               password: pass.text.toString()).then((value){
+                           }).onError((error, stackTrace){
+                             Utils().tomsg(error.toString());
+                           });
                           }
                         },
                         child: loading
@@ -172,7 +179,7 @@ class _LoginState extends State<Login> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Signup()),
+                    MaterialPageRoute(builder: (context) => signup()),
                   );
                 },
                 child: Text(

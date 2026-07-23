@@ -4,12 +4,12 @@ import 'package:fluttertoast/fluttertoast.dart';
 class Utils{
   void tomsg(String msg){
     Fluttertoast.showToast(
-        msg: "This is Center Short Toast",
+        msg: msg,
         toastLength: Toast.LENGTH_SHORT,
         gravity: ToastGravity.BOTTOM,
         timeInSecForIosWeb: 1,
         backgroundColor: Colors.white,
-        textColor: Colors.white,
+        textColor: Colors.red,
         fontSize: 16.0
     );
   }
