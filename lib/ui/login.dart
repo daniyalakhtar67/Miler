@@ -68,7 +68,9 @@ class _LoginState extends State<Login> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: AppColors.backgroundDark,
-      body: Stack(
+      body:
+
+      Stack(
         children: [
           Positioned.fill(
             child: Container(color: AppColors.backgroundDark),
@@ -154,9 +156,15 @@ class _LoginState extends State<Login> {
 
                       ElevatedButton(
                         onPressed: () {
+                          setState(() {
+                            loading = true;
+                          });
                           if (_formKey.currentState!.validate()) {
                            _auth.signInWithEmailAndPassword(email: email.text.toString(), 
                                password: pass.text.toString()).then((value){
+                                 Utils().tomsg('Successfully Login');
+                                 Navigator.push(context, MaterialPageRoute(builder: (context) => Dashboard()));
+
                            }).onError((error, stackTrace){
                              Utils().tomsg(error.toString());
                            });
