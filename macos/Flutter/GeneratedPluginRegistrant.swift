@@ -10,7 +10,7 @@ import firebase_auth
 import firebase_core
 import firebase_database
 import firebase_storage
-import isar_flutter_libs
+import isar_community_flutter_libs
 
 func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
   FLTFirebaseFirestorePlugin.register(with: registry.registrar(forPlugin: "FLTFirebaseFirestorePlugin"))

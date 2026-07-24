@@ -180,26 +180,32 @@ class _LoginState extends State<Login> {
                 ),
               ),
               SizedBox(height: 20),
-              Text(
-                'Don\'t Have an account',
-                style: TextStyle(color: Colors.white, fontSize: 18),
-              ),
-              TextButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => signup()),
-                  );
-                },
-                child: Text(
-                  'SignUp',
-                  style: TextStyle(
-                    color: Colors.pink,
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Text(
+                    'Don\'t Have an account',
+                    style: TextStyle(color: Colors.white, fontSize: 18),
                   ),
-                ),
-              ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => signup()),
+                      );
+                    },
+                    child: Text(
+                      'SignUp',
+                      style: TextStyle(
+                        color: Colors.pink,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ],
+              )
             ],
           ),
         ],

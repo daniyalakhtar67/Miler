@@ -167,26 +167,33 @@ class _signupState extends State<signup> {
                   ),
                 ),
                 SizedBox(height: 20),
-                Text(
-                  'Already have an account',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => Login()),
-                    );
-                  },
-                  child: Text(
-                    'LOGIN',
-                    style: TextStyle(
-                      color: Colors.pink,
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
+               Row(
+                 mainAxisAlignment: MainAxisAlignment.center,
+                 crossAxisAlignment: CrossAxisAlignment.center,
+                 children: [
+                   Text(
+                     'Already have an account',
+                     style: TextStyle(color: Colors.white, fontSize: 18),
+                   ),
+                   TextButton(
+                     onPressed: () {
+                       Navigator.push(
+                         context,
+                         MaterialPageRoute(builder: (context) => Login()),
+                       );
+                     },
+                     child: Text(
+                       'LOGIN',
+                       style: TextStyle(
+                         color: Colors.pink,
+                         fontSize: 18,
+                         fontWeight: FontWeight.bold,
+                       ),
+                     ),
+                   ),
+
+                 ],
+               )
               ],
             ),
           ],
