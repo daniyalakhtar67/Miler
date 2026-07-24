@@ -1,5 +1,6 @@
-import 'package:firebase_database/firebase_database.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:isar/isar.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -9,8 +10,11 @@ class Dashboard extends StatefulWidget {
 }
 
 class _DashboardState extends State<Dashboard> {
-  // FirebaseDatabase
+  // final isar = context.read<Isar>();
   @override
+  Widget _blog(double size, Color color){
+
+  };
   Widget build(BuildContext context) {
     return Scaffold();
   }

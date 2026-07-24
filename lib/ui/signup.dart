@@ -3,7 +3,7 @@ import 'dart:ui';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:running_app/ui/dashboard.dart';
+import 'package:running_app/ui/login.dart';
 import 'package:running_app/ui/login.dart';
 import 'package:running_app/ui/signup.dart';
 import 'package:running_app/widgets/colors.dart';
@@ -30,29 +30,7 @@ class _signupState extends State<signup> {
     super.dispose();
   }
 
-  void login() {
-    setState(() {
-      loading = true;
-    });
-    _auth.signInWithEmailAndPassword(
-      email: email.text.toString(),
-      password: pass.text.toString(),
-    ).then((value) {
-      Utils().tomsg(value.user!.email.toString());
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => Dashboard()),
-      );
-      setState(() {
-        loading = false;
-      });
-    }).onError((error, stackTrace) {
-      Utils().tomsg(error.toString());
-      setState(() {
-        loading = false;
-      });
-    });
-  }
+
 
   Widget _blob(Color color, double size) {
     return ImageFiltered(
